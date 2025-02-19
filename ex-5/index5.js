@@ -1,27 +1,26 @@
-//5. Faça um programa que leia as duas notas de um aluno em uma matéria e mostre na tela a sua média na disciplina.
+// 5. Faça um programa que leia as duas notas de um aluno em uma matéria e mostre na tela a sua média na disciplina.
 
-const readline = require("readline"); // importa o módulo readline
+const readline = require("readline");
 
-// cria uma interface de leitura para entrada e saída de dados
 const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
+    input: process.stdin,
+    output: process.stdout
 });
-     // pedindo a primeira nota
-  rl.question("Digite a primeira nota: ", (nota1) => {
-    
-    // pedindo a segunda nota
-    rl.question("Digite a segunda nota: ", (nota2) => {
-      
-      // convertendo os valores de string para número
-      let n1 = parseFloat(nota1);
-      let n2 = parseFloat(nota2);
-      let media = (n1 + n2) / 2;
 
-      console.log(`O aluno ${nome} tem média ${media.toFixed(2)} na disciplina.`);
+// Pergunta o nome do aluno
+rl.question("Digite seu nome: ", function(nome) {
+    // Pergunta a primeira nota
+    rl.question("Digite a primeira nota: ", function(nota1) {
+        // Pergunta a segunda nota
+        rl.question("Digite a segunda nota: ", function(nota2) {
+            // Converte as notas para números e calcula a média
+            let media = (parseFloat(nota1) + parseFloat(nota2)) / 2;
 
-      rl.close(); // fecha a interface após a captura dos dados
+            // Exibe a média do aluno
+            console.log(`A média do aluno ${nome} é: ${media}`);
+
+            // Fecha a interface de leitura
+            rl.close();
+        });
     });
-  });
-
-
+});
